@@ -9,6 +9,7 @@ const {getInfo,editInfo} = require("../controllers/info");
 const {createReview,getReviews} = require("../controllers/review");
 const {sendMail,getMails} = require("../controllers/mail");
 const {getShowcase,editShowcase} = require("../controllers/showcase");
+const {upload} = require("../helpers");
 
 const router = Router();
 
@@ -34,7 +35,7 @@ router.post("/cta/:id",editCTA);
 
 // INFO
 router.get("/info/:id",getInfo);
-router.post("/info/edit/:id",editInfo);
+router.post("/info/edit/:id",upload.single("image"),editInfo);
 
 // REVIEW
 router.post("/review",createReview);

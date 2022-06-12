@@ -1,6 +1,5 @@
 const Info = require("../models").Info;
 
-
 module.exports = {
     getInfo : async (req,res,next)=>{
         try{
@@ -20,7 +19,14 @@ module.exports = {
     editInfo : async (req,res,next)=>{
         try{
             const {id} = req.params;
-            const isUpdated = await Info.update({...req.body},{where:{id}});
+            console.log(req.file)
+            console.log(req.body);
+            let url = req.file.filename;
+            console.log(req.body);
+            const data = {
+                image:url,...req.body
+            }
+            const isUpdated = await Info.update({...data},{where:{id}});
             if(!isUpdated){
                 return next("cannot confirm changes");
             }
