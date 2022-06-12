@@ -19,10 +19,7 @@ module.exports = {
     editInfo : async (req,res,next)=>{
         try{
             const {id} = req.params;
-            console.log(req.file)
-            console.log(req.body);
             let url = req.file.filename;
-            console.log(req.body);
             const data = {
                 image:url,...req.body
             }

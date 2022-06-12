@@ -16,7 +16,10 @@ module.exports = {
     editCTA: async (req,res,next)=>{
         try{
             const {id} = req.params;
-            const isUpdated = await CallToAction.update({...req.body},{where:{id}});
+            const data = {
+                sectionImage:url,...req.body
+            }
+            const isUpdated = await CallToAction.update({...data},{where:{id}});
             if(!isUpdated){
                 return next("cannot update widget");
             }

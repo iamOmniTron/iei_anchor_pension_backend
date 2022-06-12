@@ -21,7 +21,7 @@ router.post("/admin/login",login);
 // ----LANDING PAGE----
 // HERO
 router.get("/hero/:id",getHero);
-router.post("/hero/edit/:id",editHero);
+router.post("/hero/edit/:id",upload.single("bgImage"),editHero);
 
 // SERVICE
 router.post("/services",createService);
@@ -31,7 +31,7 @@ router.post("/service/delete/:id",deleteService);
 
 // CALL TO ACTION
 router.get("/cta/:id",getCTA);
-router.post("/cta/:id",editCTA);
+router.post("/cta/:id",upload.single("sectionImage"),editCTA);
 
 // INFO
 router.get("/info/:id",getInfo);

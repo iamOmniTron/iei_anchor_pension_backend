@@ -20,7 +20,10 @@ module.exports = {
     editHero : async (req,res,next)=>{
         try{
             const {id} = req.params;
-            const isUpdated = await Hero.update({...req.body},{where:{id}});
+            const data = {
+                bgImage:url,...req.body
+            }
+            const isUpdated = await Hero.update({...data},{where:{id}});
             if(!isUpdated){
                 return next("cannot confirm changes");
             }
